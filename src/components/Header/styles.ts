@@ -27,3 +27,48 @@ export const InfosContainer = styled.div`
     line-height: 1.8;
   }
 `
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.75rem;
+    border: 0;
+    border-radius: 6px;
+
+    color: ${(props) => props.theme['yellow-dark']};
+    background: ${(props) => props.theme['yellow-light']};
+
+    :hover {
+    }
+  }
+
+  &::after {
+    content: '3';
+    position: relative;
+    top: -1.1rem;
+    right: 0.7rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 0.75rem;
+    font-weight: bold;
+
+    text-align: center;
+    letter-spacing: -0.06em;
+
+    color: ${(props) => props.theme.white};
+    background: ${(props) => props.theme['yellow-dark']};
+  }
+`
