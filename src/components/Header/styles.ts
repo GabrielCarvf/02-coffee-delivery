@@ -13,7 +13,7 @@ export const InfosContainer = styled.div`
   align-items: center;
   gap: 0.75rem;
 
-  p {
+  span {
     display: flex;
     align-items: center;
     padding: 0.5rem;
@@ -21,10 +21,13 @@ export const InfosContainer = styled.div`
     border-radius: 6px;
 
     background: ${(props) => props.theme['purple-light']};
-    color: ${(props) => props.theme['purple-dark']};
+    color: ${(props) => props.theme.purple};
 
     font-size: 0.875;
-    line-height: 1.8;
+
+    p {
+      color: ${(props) => props.theme['purple-dark']};
+    }
   }
 `
 
@@ -38,15 +41,14 @@ export const ButtonContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-    padding: 0.75rem;
+    padding: 0.5rem;
     border: 0;
     border-radius: 6px;
 
     color: ${(props) => props.theme['yellow-dark']};
     background: ${(props) => props.theme['yellow-light']};
 
-    :hover {
-    }
+    cursor: pointer;
   }
 
   &::after {

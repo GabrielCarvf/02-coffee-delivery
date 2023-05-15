@@ -8,12 +8,12 @@ export function Header() {
       <img src={logo} alt="Logo Coffee Delivery" />
 
       <InfosContainer>
-        <p>
-          <MapPin size={15} weight="fill" /> Jataí, GO
-        </p>
+        <span>
+          <MapPin size={22} weight="fill" /> <p>Jataí, GO</p>
+        </span>
         <ButtonContainer>
           <button>
-            <ShoppingCart size={18.56} weight="fill" />
+            <ShoppingCart size={22} weight="fill" />
           </button>
         </ButtonContainer>
       </InfosContainer>
