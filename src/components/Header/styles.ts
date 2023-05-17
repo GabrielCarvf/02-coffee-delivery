@@ -55,7 +55,7 @@ export const ButtonContainer = styled.div`
   }
 
   &::after {
-    content: '3';
+    content: attr(data-after);
     position: relative;
     top: -1.1rem;
     right: 0.7rem;

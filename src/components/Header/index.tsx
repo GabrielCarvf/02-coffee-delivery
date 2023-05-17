@@ -1,11 +1,11 @@
 import { ButtonContainer, HeaderContainer, InfosContainer } from './styles'
 import logo from '../../assets/logo_coffee_delivery.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
-// import { CoffeesContext } from '../../context/CoffeesContext'
-// import { useContext } from 'react'
+import { useContext } from 'react'
+import { CoffeesContext } from '../../context/CoffeesContext'
 
 export function Header() {
-  // const { totalCoffes } = useContext(CoffeesContext)
+  const { totalCoffees } = useContext(CoffeesContext)
 
   return (
     <HeaderContainer>
@@ -15,7 +15,7 @@ export function Header() {
         <span>
           <MapPin size={22} weight="fill" /> <p>Jataí, GO</p>
         </span>
-        <ButtonContainer>
+        <ButtonContainer data-after={totalCoffees}>
           <button>
             <ShoppingCart size={22} weight="fill" />
           </button>

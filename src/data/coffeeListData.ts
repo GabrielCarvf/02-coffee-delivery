@@ -18,8 +18,8 @@ export interface Coffee {
   tags: string[]
   title: string
   subTitle: string
-  price: Number
-  amount: Number
+  price: number
+  amount: number
   image: string
 }
 
