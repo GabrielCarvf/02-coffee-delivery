@@ -125,9 +125,9 @@ export const CoffeeListContainer = styled.div`
 
 export const CoffeeList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 20rem);
+  grid-template-columns: repeat(auto-fit, 16rem);
   justify-content: center;
-  gap: 3rem 4rem;
+  gap: 3rem 3rem;
 
   @media (max-width: 768px) {
     grid-template-columns: none;

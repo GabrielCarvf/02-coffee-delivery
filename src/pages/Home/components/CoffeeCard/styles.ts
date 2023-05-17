@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const CoffeeCardContainer = styled.div`
   width: 16rem;
-  /* height: 19.375rem; */
   padding: 0 1.25rem 1.25rem 1.25rem;
 
   background: ${(props) => props.theme['base-card']};
@@ -21,15 +20,19 @@ export const CoffeeCardContainer = styled.div`
     width: 7.5rem;
   }
 
-  label {
-    background: ${(props) => props.theme['yellow-light']};
-    color: ${(props) => props.theme['yellow-dark']};
-    border-radius: 100px;
-    padding: 0.25rem 0.5rem;
+  ul {
+    display: flex;
+    gap: 0.4rem;
+    label {
+      background: ${(props) => props.theme['yellow-light']};
+      color: ${(props) => props.theme['yellow-dark']};
+      border-radius: 100px;
+      padding: 0.25rem 0.5rem;
 
-    font-weight: bold;
-    font-size: 0.625rem;
-    line-height: 1.3;
+      font-weight: bold;
+      font-size: 0.625rem;
+      line-height: 1.3;
+    }
   }
 
   h3 {
@@ -41,7 +44,7 @@ export const CoffeeCardContainer = styled.div`
     line-height: 130%;
   }
 
-  text {
+  p {
     font-size: 0.875rem;
     line-height: 1.3;
     color: ${(props) => props.theme['base-label']};

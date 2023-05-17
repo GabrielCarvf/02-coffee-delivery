@@ -11,8 +11,12 @@ import {
   TableInfos,
 } from './styles'
 import { CoffeeCard } from './components/CoffeeCard'
+import { useContext } from 'react'
+import { CoffeesContext } from '../../context/CoffeesContext'
 
 export function Home() {
+  const { coffees } = useContext(CoffeesContext)
+
   return (
     <HomeContainer>
       <IntroContainer>
@@ -61,11 +65,9 @@ export function Home() {
       <CoffeeListContainer>
         <h1>Nossos cafés</h1>
         <CoffeeList>
-          <CoffeeCard />
-          <CoffeeCard />
-          <CoffeeCard />
-          <CoffeeCard />
-          <CoffeeCard />
+          {coffees.map((coffeeData) => (
+            <CoffeeCard key={coffeeData.type} coffeeData={coffeeData} />
+          ))}
         </CoffeeList>
       </CoffeeListContainer>
     </HomeContainer>
