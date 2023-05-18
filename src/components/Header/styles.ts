@@ -34,22 +34,34 @@ export const InfosContainer = styled.div`
   }
 `
 
-export const ButtonContainer = styled.div`
+export const CheckoutButton = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  button {
+  a {
     display: flex;
     justify-content: center;
     align-items: center;
 
     padding: 0.5rem;
-    border: 0;
+    border: 0.13rem solid transparent;
     border-radius: 6px;
 
     color: ${(props) => props.theme['yellow-dark']};
     background: ${(props) => props.theme['yellow-light']};
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+    transition: 0.15s;
+
+    &:hover {
+      border: 0.13rem solid ${(props) => props.theme['yellow-dark']};
+      /* color: ${(props) => props.theme.background}; */
+      /* background: ${(props) => props.theme.yellow}; */
+    }
 
     cursor: pointer;
   }

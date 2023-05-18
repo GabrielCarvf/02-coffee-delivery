@@ -110,6 +110,8 @@ export const Counter = styled.div`
     background: transparent;
     color: ${(props) => props.theme.purple};
 
+    cursor: pointer;
+
     &:hover {
       color: ${(props) => props.theme['purple-dark']};
     }

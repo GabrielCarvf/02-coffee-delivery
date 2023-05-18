@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useReducer } from 'react'
+import { ReactNode, createContext, useEffect, useReducer } from 'react'
 import { Coffee, coffeeListData } from '../data/coffeeListData'
 import { coffeesReducer } from '../reducers/coffees/reduces'
 
@@ -57,6 +57,12 @@ export function CoffeesContextProvider({
       },
     })
   }
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(coffeesState)
+
+    localStorage.setItem('@coffee-delivery:coffees-state-1.0.0', stateJSON)
+  }, [coffeesState])
 
   return (
     <CoffeesContext.Provider
