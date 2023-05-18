@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import { CoffeesContext } from '../../context/CoffeesContext'
 
 export function Header() {
-  const { totalCoffees } = useContext(CoffeesContext)
+  const { amountOfCoffees } = useContext(CoffeesContext)
 
   return (
     <HeaderContainer>
@@ -15,7 +15,7 @@ export function Header() {
         <span>
           <MapPin size={22} weight="fill" /> <p>Jataí, GO</p>
         </span>
-        <ButtonContainer data-after={totalCoffees}>
+        <ButtonContainer data-after={amountOfCoffees}>
           <button>
             <ShoppingCart size={22} weight="fill" />
           </button>

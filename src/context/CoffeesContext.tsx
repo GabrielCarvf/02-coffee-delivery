@@ -1,6 +1,6 @@
-import { ReactNode, createContext, useState } from 'react'
+import { ReactNode, createContext, useReducer } from 'react'
 import { Coffee, coffeeListData } from '../data/coffeeListData'
-import { produce } from 'immer'
+import { coffeesReducer } from '../reducers/coffees/reduces'
 
 interface CoffeesContextProviderProps {
   children: ReactNode
@@ -8,7 +8,7 @@ interface CoffeesContextProviderProps {
 
 interface CoffeesContextType {
   coffees: Coffee[]
-  totalCoffees: Number
+  amountOfCoffees: Number
   addCoffee: (coffeeType: string) => void
   removeCoffee: (coffeeType: string) => void
 }
@@ -18,46 +18,49 @@ export const CoffeesContext = createContext({} as CoffeesContextType)
 export function CoffeesContextProvider({
   children,
 }: CoffeesContextProviderProps) {
-  const [coffees, setCoffees] = useState(coffeeListData)
-  const [totalCoffees, setTotalCoffees] = useState(0)
+  const [coffeesState, dispatch] = useReducer(
+    coffeesReducer,
+    {
+      coffees: coffeeListData,
+      amountOfCoffees: 0,
+      totalPrice: 0,
+    },
+    (initialState) => {
+      const storedStateAsJSON = localStorage.getItem(
+        '@coffee-delivery:coffees-state-1.0.0',
+      )
+
+      if (storedStateAsJSON) {
+        return JSON.parse(storedStateAsJSON)
+      }
+
+      return initialState
+    },
+  )
+
+  const { coffees, amountOfCoffees } = coffeesState
 
   function addCoffee(coffeeType: string) {
-    setCoffees(
-      produce(coffees, (draft) => {
-        const indexCoffee = draft.findIndex(
-          (coffee) => coffee.type === coffeeType,
-        )
-        if (indexCoffee !== -1) {
-          draft[indexCoffee].amount = draft[indexCoffee].amount + 1
-        }
-      }),
-    )
-
-    setTotalCoffees((state) => {
-      return state + 1
+    dispatch({
+      type: 'ADD_COFFEE',
+      payload: {
+        coffeeType,
+      },
     })
   }
 
   function removeCoffee(coffeeType: string) {
-    setCoffees(
-      produce(coffees, (draft) => {
-        const indexCoffee = draft.findIndex(
-          (coffee) => coffee.type === coffeeType,
-        )
-        if (indexCoffee !== -1 && draft[indexCoffee].amount > 0) {
-          draft[indexCoffee].amount = draft[indexCoffee].amount - 1
-        }
-      }),
-    )
-
-    setTotalCoffees((state) => {
-      return state === 0 ? 0 : state - 1
+    dispatch({
+      type: 'REMOVE_COFFEE',
+      payload: {
+        coffeeType,
+      },
     })
   }
 
   return (
     <CoffeesContext.Provider
-      value={{ coffees, totalCoffees, addCoffee, removeCoffee }}
+      value={{ coffees, amountOfCoffees, addCoffee, removeCoffee }}
     >
       {children}
     </CoffeesContext.Provider>

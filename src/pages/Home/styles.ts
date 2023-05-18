@@ -14,7 +14,7 @@ export const HomeContainer = styled.div`
 
 export const IntroContainer = styled.div`
   width: 100%;
-  padding: 5.75rem 10rem;
+  padding: 3.75rem 10rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -107,7 +107,7 @@ export const ShortInfo = styled.div<IconBackgroundColor>`
 export const CoffeeListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 10rem;
+  padding: 2rem 10rem;
   gap: 3.375rem;
 
   @media (max-width: 768px) {
