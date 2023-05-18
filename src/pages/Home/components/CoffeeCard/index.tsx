@@ -49,7 +49,7 @@ export function CoffeeCard({ coffeeData }: coffeeData) {
         </Counter>
 
         <CartButton>
-          <ShoppingCart size={22} weight="fill" />
+          <ShoppingCart size={17.88} weight="fill" />
         </CartButton>
       </div>
     </CoffeeCardContainer>
