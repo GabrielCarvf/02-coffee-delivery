@@ -1,9 +1,10 @@
-import { CartButton, CoffeeCardContainer, Counter, PriceText } from './styles'
+import { CoffeeCardContainer, Counter, PriceText } from './styles'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { Coffee } from '../../../../data/coffeeListData'
 import { useContext } from 'react'
 
 import { CoffeesContext } from '../../../../context/CoffeesContext'
+import { NavLink } from 'react-router-dom'
 
 interface coffeeData {
   coffeeData: Coffee
@@ -48,9 +49,9 @@ export function CoffeeCard({ coffeeData }: coffeeData) {
           </button>
         </Counter>
 
-        <CartButton>
+        <NavLink to="/checkout">
           <ShoppingCart size={17.88} weight="fill" />
-        </CartButton>
+        </NavLink>
       </div>
     </CoffeeCardContainer>
   )

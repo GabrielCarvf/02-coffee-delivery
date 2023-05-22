@@ -55,6 +55,24 @@ export const CoffeeCardContainer = styled.div`
     align-items: center;
     gap: 0.5rem;
   }
+
+  a {
+    border: 0;
+    border-radius: 6px;
+    padding: 0.5rem;
+
+    line-height: 0px;
+
+    color: ${(props) => props.theme['base-card']};
+    background: ${(props) => props.theme['purple-dark']};
+
+    cursor: pointer;
+    transition: 0.15s;
+
+    &:hover {
+      background: ${(props) => props.theme.purple};
+    }
+  }
 `
 
 export const PriceText = styled.span`
@@ -73,23 +91,7 @@ export const PriceText = styled.span`
   }
 `
 
-export const CartButton = styled.button`
-  border: 0;
-  border-radius: 6px;
-  padding: 0.5rem;
-
-  line-height: 0px;
-
-  color: ${(props) => props.theme['base-card']};
-  background: ${(props) => props.theme['purple-dark']};
-
-  cursor: pointer;
-  transition: 0.15s;
-
-  &:hover {
-    background: ${(props) => props.theme.purple};
-  }
-`
+export const CartButton = styled.a``
 
 export const Counter = styled.div`
   display: flex;

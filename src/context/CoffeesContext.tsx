@@ -8,9 +8,12 @@ interface CoffeesContextProviderProps {
 
 interface CoffeesContextType {
   coffees: Coffee[]
-  amountOfCoffees: Number
+  amountOfCoffees: number
+  totalPrice: number
   addCoffee: (coffeeType: string) => void
   removeCoffee: (coffeeType: string) => void
+  removeAllAmountOfCoffee: (coffeeType: string) => void
+  createNewOrder: (dataOrder: object) => void
 }
 
 export const CoffeesContext = createContext({} as CoffeesContextType)
@@ -38,7 +41,7 @@ export function CoffeesContextProvider({
     },
   )
 
-  const { coffees, amountOfCoffees } = coffeesState
+  const { coffees, amountOfCoffees, totalPrice } = coffeesState
 
   function addCoffee(coffeeType: string) {
     dispatch({
@@ -58,15 +61,34 @@ export function CoffeesContextProvider({
     })
   }
 
+  function removeAllAmountOfCoffee(coffeeType: string) {
+    dispatch({
+      type: 'REMOVE_ALL_AMOUNT_COFFEE',
+      payload: {
+        coffeeType,
+      },
+    })
+  }
+
   useEffect(() => {
     const stateJSON = JSON.stringify(coffeesState)
 
     localStorage.setItem('@coffee-delivery:coffees-state-1.0.0', stateJSON)
   }, [coffeesState])
 
+  function createNewOrder(data: object) {}
+
   return (
     <CoffeesContext.Provider
-      value={{ coffees, amountOfCoffees, addCoffee, removeCoffee }}
+      value={{
+        coffees,
+        amountOfCoffees,
+        totalPrice,
+        addCoffee,
+        removeCoffee,
+        removeAllAmountOfCoffee,
+        createNewOrder,
+      }}
     >
       {children}
     </CoffeesContext.Provider>
