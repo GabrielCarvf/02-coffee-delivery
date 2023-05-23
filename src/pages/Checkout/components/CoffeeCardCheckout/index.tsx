@@ -40,15 +40,15 @@ export function CoffeeCardCheckout({ coffeeData }: coffeeData) {
           <span>{coffeeData.title}</span>
           <CounterContainer>
             <Counter>
-              <button onClick={handleRemoveCoffee}>
+              <button type="button" onClick={handleRemoveCoffee}>
                 <Minus size={14} weight="bold" />
               </button>
               <p>{coffeeData.amount.toString()}</p>
-              <button onClick={handleAddCoffee}>
+              <button type="button" onClick={handleAddCoffee}>
                 <Plus size={14} weight="bold" />
               </button>
             </Counter>
-            <button onClick={handleRemoveAllAmountOfCoffee}>
+            <button type="button" onClick={handleRemoveAllAmountOfCoffee}>
               <Trash size={13} color={defaultTheme.purple} />
               REMOVER
             </button>

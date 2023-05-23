@@ -6,6 +6,7 @@ import { CoffeesContext } from '../../context/CoffeesContext'
 import { CoffeeCardCheckout } from './components/CoffeeCardCheckout'
 import { PaymentMethods } from './components/PaymentMethod'
 import { OrderInformationForm } from './components/OrderInformationForm'
+import { useNavigate } from 'react-router-dom'
 import * as zod from 'zod'
 import {
   CheckoutContainer,
@@ -38,7 +39,7 @@ const newOrderValidationSchema = zod.object({
 export type NewOrderFormData = zod.infer<typeof newOrderValidationSchema>
 
 export function Checkout() {
-  const { coffees, totalPrice, createNewOrder } = useContext(CoffeesContext)
+  const { coffees, totalPrice } = useContext(CoffeesContext)
   const newOrderForm = useForm<NewOrderFormData>({
     resolver: zodResolver(newOrderValidationSchema),
     defaultValues: {
@@ -54,9 +55,10 @@ export function Checkout() {
   })
 
   const { handleSubmit, reset } = newOrderForm
+  const navigate = useNavigate()
 
-  function handleCreateNewOrder(data: NewOrderFormData) {
-    createNewOrder(data)
+  function handleCreateNewOrder() {
+    navigate('/order_confirmed')
     reset()
   }
 

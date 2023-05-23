@@ -13,7 +13,6 @@ interface CoffeesContextType {
   addCoffee: (coffeeType: string) => void
   removeCoffee: (coffeeType: string) => void
   removeAllAmountOfCoffee: (coffeeType: string) => void
-  createNewOrder: (dataOrder: object) => void
 }
 
 export const CoffeesContext = createContext({} as CoffeesContextType)
@@ -76,8 +75,6 @@ export function CoffeesContextProvider({
     localStorage.setItem('@coffee-delivery:coffees-state-1.0.0', stateJSON)
   }, [coffeesState])
 
-  function createNewOrder(data: object) {}
-
   return (
     <CoffeesContext.Provider
       value={{
@@ -87,7 +84,6 @@ export function CoffeesContextProvider({
         addCoffee,
         removeCoffee,
         removeAllAmountOfCoffee,
-        createNewOrder,
       }}
     >
       {children}

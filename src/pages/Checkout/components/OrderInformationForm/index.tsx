@@ -1,7 +1,6 @@
 import { useFormContext } from 'react-hook-form'
 import { FlexColumn, FlexRowWrap, FormInputsContainer } from './styles'
 import { NewOrderFormData } from '../..'
-import InputMask from 'react-input-mask'
 
 export function OrderInformationForm() {
   const {
@@ -13,9 +12,7 @@ export function OrderInformationForm() {
     <FormInputsContainer>
       <FlexRowWrap>
         <FlexColumn width="35%">
-          <InputMask
-            mask="99999-999"
-            maskChar={null}
+          <input
             type="text"
             id="zipCode"
             placeholder="CEP"
@@ -37,9 +34,7 @@ export function OrderInformationForm() {
       </FlexRowWrap>
       <FlexRowWrap>
         <FlexColumn width="35%">
-          <InputMask
-            mask="99999"
-            maskChar={null}
+          <input
             type="text"
             id="number"
             placeholder="Número"
@@ -77,9 +72,7 @@ export function OrderInformationForm() {
           {errors?.city && <span>{errors.city.message}</span>}
         </FlexColumn>
         <FlexColumn width="10%">
-          <InputMask
-            mask="aa"
-            maskChar={null}
+          <input
             type="text"
             id="federatedUnit"
             placeholder="UF"
