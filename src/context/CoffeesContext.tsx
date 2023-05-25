@@ -1,6 +1,7 @@
 import { ReactNode, createContext, useEffect, useReducer } from 'react'
 import { Coffee, coffeeListData } from '../data/coffeeListData'
 import { coffeesReducer } from '../reducers/coffees/reduces'
+import { NewOrderFormData } from '../pages/Checkout'
 
 interface CoffeesContextProviderProps {
   children: ReactNode
@@ -10,7 +11,9 @@ interface CoffeesContextType {
   coffees: Coffee[]
   amountOfCoffees: number
   totalPrice: number
+  checkoutData: NewOrderFormData
   addCoffee: (coffeeType: string) => void
+  setCheckoutData: (checkoutData: NewOrderFormData) => void
   removeCoffee: (coffeeType: string) => void
   removeAllAmountOfCoffee: (coffeeType: string) => void
 }
@@ -26,6 +29,7 @@ export function CoffeesContextProvider({
       coffees: coffeeListData,
       amountOfCoffees: 0,
       totalPrice: 0,
+      checkoutData: 0,
     },
     (initialState) => {
       const storedStateAsJSON = localStorage.getItem(
@@ -40,7 +44,7 @@ export function CoffeesContextProvider({
     },
   )
 
-  const { coffees, amountOfCoffees, totalPrice } = coffeesState
+  const { coffees, amountOfCoffees, totalPrice, checkoutData } = coffeesState
 
   function addCoffee(coffeeType: string) {
     dispatch({
@@ -69,6 +73,15 @@ export function CoffeesContextProvider({
     })
   }
 
+  function setCheckoutData(checkoutData: NewOrderFormData) {
+    dispatch({
+      type: 'SET_CHECKOUT_DATA',
+      payload: {
+        checkoutData,
+      },
+    })
+  }
+
   useEffect(() => {
     const stateJSON = JSON.stringify(coffeesState)
 
@@ -81,8 +94,10 @@ export function CoffeesContextProvider({
         coffees,
         amountOfCoffees,
         totalPrice,
+        checkoutData,
         addCoffee,
         removeCoffee,
+        setCheckoutData,
         removeAllAmountOfCoffee,
       }}
     >

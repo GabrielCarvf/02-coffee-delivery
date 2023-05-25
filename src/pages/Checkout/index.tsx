@@ -39,7 +39,7 @@ const newOrderValidationSchema = zod.object({
 export type NewOrderFormData = zod.infer<typeof newOrderValidationSchema>
 
 export function Checkout() {
-  const { coffees, totalPrice } = useContext(CoffeesContext)
+  const { coffees, totalPrice, setCheckoutData } = useContext(CoffeesContext)
   const newOrderForm = useForm<NewOrderFormData>({
     resolver: zodResolver(newOrderValidationSchema),
     defaultValues: {
@@ -57,7 +57,8 @@ export function Checkout() {
   const { handleSubmit, reset } = newOrderForm
   const navigate = useNavigate()
 
-  function handleCreateNewOrder() {
+  function handleCreateNewOrder(data: NewOrderFormData) {
+    setCheckoutData(data)
     navigate('/order_confirmed')
     reset()
   }

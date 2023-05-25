@@ -1,9 +1,11 @@
 import { produce } from 'immer'
 import { Coffee } from '../../data/coffeeListData'
+import { NewOrderFormData } from '../../pages/Checkout'
 
 interface CoffeeState {
   coffees: Coffee[]
   amountOfCoffees: number
+  checkoutData: NewOrderFormData
   totalPrice: number
 }
 
@@ -45,6 +47,11 @@ export function coffeesReducer(state: CoffeeState, action: any) {
           draft.amountOfCoffees -= draft.coffees[indexCoffee].amount
           draft.coffees[indexCoffee].amount = 0
         }
+      })
+
+    case 'SET_CHECKOUT_DATA':
+      return produce(state, (draft) => {
+        draft.checkoutData = action.payload.checkoutData
       })
 
     default:

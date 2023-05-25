@@ -17,7 +17,7 @@ export function PaymentMethods() {
           <input
             type="radio"
             id="paymentMethod_1"
-            value="creditCard"
+            value="Cartão de Crédito"
             {...register('paymentMethod')}
           />
           <span>
@@ -29,7 +29,7 @@ export function PaymentMethods() {
           <input
             type="radio"
             id="paymentMethod_2"
-            value="debitCard"
+            value="Cartão de Débito"
             {...register('paymentMethod')}
           />
           <span>
@@ -40,7 +40,7 @@ export function PaymentMethods() {
           <input
             type="radio"
             id="paymentMethod_3"
-            value="cash"
+            value="Dinheiro"
             {...register('paymentMethod')}
           />
           <span>

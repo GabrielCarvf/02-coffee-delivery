@@ -7,8 +7,12 @@ import {
   OrderConfirmedContainer,
   TitleContainer,
 } from './styles'
+import { useContext } from 'react'
+import { CoffeesContext } from '../../context/CoffeesContext'
 
 export function OrderConfirmed() {
+  const { checkoutData } = useContext(CoffeesContext)
+
   return (
     <OrderConfirmedContainer>
       <InfosContainer>
@@ -23,9 +27,15 @@ export function OrderConfirmed() {
             </span>
             <div>
               <p>
-                Entrega em <strong>Rua João Daniel Martinelli, 102 </strong>
+                Entrega em{' '}
+                <strong>
+                  Rua {checkoutData.address}, {checkoutData.number}{' '}
+                </strong>
               </p>
-              <p>Farrapos - Porto Alegre, RS</p>
+              <p>
+                {checkoutData.district} - {checkoutData.city},{' '}
+                {checkoutData.federatedUnit}
+              </p>
             </div>
           </ShortInfo>
           <ShortInfo background_color="yellow">
@@ -47,7 +57,7 @@ export function OrderConfirmed() {
             <div>
               <p>Pagamento na entrega</p>
               <p>
-                <strong>Cartão de Crédito</strong>
+                <strong>{checkoutData.paymentMethod}</strong>
               </p>
             </div>
             <label></label>
